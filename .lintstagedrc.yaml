@@ -1,0 +1,9 @@
+# Lint but don't fix, throw error instead
+"*.{js,ts}": "eslint"
+
+# Auto-format with prettier
+"*.{js,ts,md}": "prettier --write"
+
+# Check types
+# Why bash? https://github.com/okonet/lint-staged/issues/825
+"*.ts": "bash -c tsc --noEmit"
