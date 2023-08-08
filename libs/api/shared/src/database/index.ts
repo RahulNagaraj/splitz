@@ -1,4 +1,16 @@
 import { DatabaseModule } from "./database.module";
-import { DatabaseOptionsService } from "./database-options.service";
+import { DatabaseOptionsService } from "./services/database-options.service";
+import { DatabaseMongoEntityAbstract } from "./abstracts/mongo/entities/database.mongo.entity.abstract";
+import { DatabaseMongoRepositoryAbstract } from "./abstracts/mongo/repositories/database.mongo.repository";
+import { DatabaseEntity, DatabaseModel } from "./decorators/database.decorator";
+import { DATABASE_CONNECTION_NAME } from "./constants/database.constants";
 
-export { DatabaseModule, DatabaseOptionsService };
+export {
+    DatabaseModule,
+    DatabaseOptionsService,
+    DatabaseMongoEntityAbstract,
+    DatabaseMongoRepositoryAbstract,
+    DatabaseEntity,
+    DatabaseModel,
+    DATABASE_CONNECTION_NAME,
+};

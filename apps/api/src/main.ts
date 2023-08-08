@@ -41,6 +41,9 @@ async function bootstrap() {
     const host = appConfig.http.host;
     const port = appConfig.http.port;
 
+    // Set Global Prefix
+    app.setGlobalPrefix(appConfig.globalPrefix);
+
     await app.listen(appConfig.http.port);
     Logger.log(`🚀 Application is running on: http://${host}:${port}`);
 }

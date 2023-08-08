@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { MongooseModuleOptions } from "@nestjs/mongoose";
-import { IDatabaseConfig } from "../config/database.config";
+import { IDatabaseConfig } from "../../config/database.config";
 
 @Injectable()
 export class DatabaseOptionsService {

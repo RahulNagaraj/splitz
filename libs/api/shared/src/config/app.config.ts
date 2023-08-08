@@ -15,7 +15,7 @@ export default registerAs(
     (): IAppConfig => ({
         name: process.env["APP_NAME"] ?? "splitz",
         env: "dev",
-        globalPrefix: "/api",
+        globalPrefix: "api",
         http: {
             host: process.env["HTTP_HOST"] ?? "localhost",
             port: Number.parseInt(process.env["HTTP_PORT"] ?? "4001", 10),

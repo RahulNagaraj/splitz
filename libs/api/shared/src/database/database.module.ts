@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { DatabaseOptionsService } from "./database-options.service";
+import { DatabaseOptionsService } from "./services/database-options.service";
 
 @Module({
     providers: [DatabaseOptionsService],

@@ -1,7 +1,13 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
-import { configuration, DatabaseModule, DatabaseOptionsService } from "@splitz/api/shared";
+import {
+    configuration,
+    DATABASE_CONNECTION_NAME,
+    DatabaseModule,
+    DatabaseOptionsService,
+} from "@splitz/api/shared";
+import { UserModule } from "./user/user.module";
 
 @Module({
     imports: [
@@ -11,11 +17,13 @@ import { configuration, DatabaseModule, DatabaseOptionsService } from "@splitz/a
             load: configuration,
         }),
         MongooseModule.forRootAsync({
+            connectionName: DATABASE_CONNECTION_NAME,
             imports: [DatabaseModule],
             inject: [DatabaseOptionsService],
             useFactory: (databaseOptionsService: DatabaseOptionsService) =>
                 databaseOptionsService.createOptions(),
         }),
+        UserModule,
     ],
     controllers: [],
     providers: [],
