@@ -5,6 +5,7 @@ import { AppModule } from "./app.module";
 import helmet from "@fastify/helmet";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { ConfigService } from "@nestjs/config";
+import { IAppConfig } from "@splitz/api/shared";
 
 async function bootstrap() {
     const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
@@ -36,10 +37,15 @@ async function bootstrap() {
     // Config service
     const configService = app.get(ConfigService);
 
-    const port = configService.get("port");
+    const appConfig = configService.getOrThrow<IAppConfig>("app");
+    const host = appConfig.http.host;
+    const port = appConfig.http.port;
 
-    await app.listen(port);
-    Logger.log(`🚀 Application is running on: http://localhost:${port}}`);
+    // Set Global Prefix
+    app.setGlobalPrefix(appConfig.globalPrefix);
+
+    await app.listen(appConfig.http.port);
+    Logger.log(`🚀 Application is running on: http://${host}:${port}`);
 }
 
 bootstrap();

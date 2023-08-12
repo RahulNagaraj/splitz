@@ -1,23 +1,29 @@
 import { Module } from "@nestjs/common";
-import { ConfigModule, ConfigService } from "@nestjs/config";
-import configuration from "./config/configuration";
+import { ConfigModule } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
+import {
+    configuration,
+    DATABASE_CONNECTION_NAME,
+    DatabaseModule,
+    DatabaseOptionsService,
+} from "@splitz/api/shared";
+import { UserModule } from "./user/user.module";
 
 @Module({
     imports: [
         ConfigModule.forRoot({
             isGlobal: true,
             envFilePath: [".env"],
-            load: [configuration],
+            load: configuration,
         }),
         MongooseModule.forRootAsync({
-            connectionName: "splitz",
-            inject: [ConfigService],
-            useFactory: (configService: ConfigService) => {
-                const uri = configService.getOrThrow<string>("databaseUrl");
-                return { uri };
-            },
+            connectionName: DATABASE_CONNECTION_NAME,
+            imports: [DatabaseModule],
+            inject: [DatabaseOptionsService],
+            useFactory: (databaseOptionsService: DatabaseOptionsService) =>
+                databaseOptionsService.createOptions(),
         }),
+        UserModule,
     ],
     controllers: [],
     providers: [],
