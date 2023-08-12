@@ -5,6 +5,8 @@ import { DatabaseMongoRepositoryAbstract } from "./abstracts/mongo/repositories/
 import { DatabaseEntity, DatabaseModel } from "./decorators/database.decorator";
 import { DATABASE_CONNECTION_NAME } from "./constants/database.constants";
 
+export * from "./interfaces/database.interface";
+
 export {
     DatabaseModule,
     DatabaseOptionsService,

@@ -12,6 +12,13 @@ export interface IDatabaseFindAllOptions
     extends IPaginationOptions,
         Omit<IDatabaseFindOneOptions, "order"> {}
 
+export type IDatabaseGetTotalOptions = Pick<IDatabaseFindOneOptions, "withDeleted" | "join">;
+
+export interface IDatabaseExistOptions
+    extends Pick<IDatabaseFindOneOptions, "withDeleted" | "join"> {
+    excludeId?: string[];
+}
+
 // Create
 export interface IDatabaseCreateOptions extends IDatabaseFindOneOptions {
     _id?: string;

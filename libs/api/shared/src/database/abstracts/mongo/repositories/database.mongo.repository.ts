@@ -11,8 +11,10 @@ import {
 import { DatabaseBaseRepositoryAbstract } from "../../database.base-repository.abstract";
 import {
     IDatabaseCreateOptions,
+    IDatabaseExistOptions,
     IDatabaseFindAllOptions,
     IDatabaseFindOneOptions,
+    IDatabaseGetTotalOptions,
     IDatabaseManyOptions,
     IDatabaseRawOptions,
     IDatabaseSaveOptions,
@@ -195,6 +197,77 @@ export abstract class DatabaseMongoRepositoryAbstract<
         }
 
         return findOne.exec();
+    }
+
+    // Get total
+    async getTotal<T = EntityDocument>(
+        find?: FilterQuery<T>,
+        options?: IDatabaseGetTotalOptions
+    ): Promise<number> {
+        const count = this.repository.countDocuments(find);
+
+        if (options?.withDeleted) {
+            count.or([
+                {
+                    [DATABASE_DELETED_AT_FIELD_NAME]: { $exists: false },
+                },
+                {
+                    [DATABASE_DELETED_AT_FIELD_NAME]: { $exists: true },
+                },
+            ]);
+        } else {
+            count.where(DATABASE_DELETED_AT_FIELD_NAME).exists(false);
+        }
+
+        if (options?.join) {
+            count.populate(
+                typeof options.join === "boolean" && this.joinOnFind
+                    ? this.joinOnFind
+                    : (options.join as PopulateOptions | PopulateOptions[])
+            );
+        }
+
+        return count;
+    }
+
+    // Exist
+    async exists<T = EntityDocument>(
+        find: FilterQuery<T>,
+        options?: IDatabaseExistOptions
+    ): Promise<boolean> {
+        if (options?.excludeId) {
+            find = {
+                ...find,
+                _id: {
+                    $nin: options?.excludeId.map((val) => new Types.ObjectId(val)) ?? [],
+                },
+            };
+        }
+
+        const exist = this.repository.exists(find);
+        if (options?.withDeleted) {
+            exist.or([
+                {
+                    [DATABASE_DELETED_AT_FIELD_NAME]: { $exists: false },
+                },
+                {
+                    [DATABASE_DELETED_AT_FIELD_NAME]: { $exists: true },
+                },
+            ]);
+        } else {
+            exist.where(DATABASE_DELETED_AT_FIELD_NAME).exists(false);
+        }
+
+        if (options?.join) {
+            exist.populate(
+                typeof options.join === "boolean" && this.joinOnFind
+                    ? this.joinOnFind
+                    : (options.join as PopulateOptions | PopulateOptions[])
+            );
+        }
+
+        const result = await exist;
+        return result ? true : false;
     }
 
     // Create

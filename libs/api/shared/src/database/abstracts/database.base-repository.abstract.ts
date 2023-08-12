@@ -8,8 +8,10 @@ import {
 } from "mongoose";
 import {
     IDatabaseCreateOptions,
+    IDatabaseExistOptions,
     IDatabaseFindAllOptions,
     IDatabaseFindOneOptions,
+    IDatabaseGetTotalOptions,
     IDatabaseManyOptions,
     IDatabaseRawOptions,
     IDatabaseSaveOptions,
@@ -41,6 +43,16 @@ export abstract class DatabaseBaseRepositoryAbstract<
         _id: string,
         options?: IDatabaseFindOneOptions
     ): Promise<T | null>;
+
+    abstract getTotal<T = EntityDocument>(
+        find?: FilterQuery<T>,
+        options?: IDatabaseGetTotalOptions
+    ): Promise<number>;
+
+    abstract exists<T = EntityDocument>(
+        find: FilterQuery<T>,
+        options?: IDatabaseExistOptions
+    ): Promise<boolean>;
 
     abstract create<T = EntityDocument>(data: Entity, options?: IDatabaseCreateOptions): Promise<T>;
 
