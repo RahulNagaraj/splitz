@@ -1,7 +1,14 @@
 import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { UserService } from "../services/user.service";
 import { CreateUserDto } from "../dto/user.create-user.dto";
-import { PaginationQuery, PaginationService, PaginationConstants } from "@splitz/api/shared";
+import {
+    PaginationQuery,
+    PaginationService,
+    PaginationConstants,
+    IResponsePaging,
+    ResponsePaging,
+} from "@splitz/api/shared";
+import { UserListSerialization } from "../serializations/user.list.serialization";
 
 @Controller({ version: "1", path: "/user" })
 export class UserController {
@@ -25,16 +32,18 @@ export class UserController {
     }
 
     @Get("/list")
+    @ResponsePaging({ serialization: UserListSerialization })
     public async listOfUsers(
         @PaginationQuery(
+            1,
             10,
             "createdAt",
             PaginationConstants.ENUM_PAGINATION_ORDER_DIRECTION_TYPE.ASC,
-            [],
-            []
+            ["username"],
+            ["username"]
         )
         { _search, _limit, _offset, _order }
-    ): Promise<any> {
+    ): Promise<IResponsePaging> {
         const find = { ..._search };
 
         const users = await this.userService.findAll(find, {

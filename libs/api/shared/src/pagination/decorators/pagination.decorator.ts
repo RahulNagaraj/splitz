@@ -5,6 +5,7 @@ import { PaginationOrderPipe } from "../pipes/pagination.order.pipe";
 import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "../constants/pagination.constants";
 
 export function PaginationQuery(
+    defaultPage: number,
     defaultPerPage: number,
     paginationOrderBy: string,
     paginationOrderDirection: ENUM_PAGINATION_ORDER_DIRECTION_TYPE,
@@ -13,7 +14,7 @@ export function PaginationQuery(
 ): ParameterDecorator {
     return Query(
         PaginationSearchPipe(availableSearch),
-        PaginationPagingPipe(defaultPerPage),
+        PaginationPagingPipe(defaultPage, defaultPerPage),
         PaginationOrderPipe(paginationOrderBy, paginationOrderDirection, availableOrderBy)
     );
 }
