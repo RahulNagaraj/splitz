@@ -4,9 +4,10 @@ import { CreateUserDto } from "../dto/user.create-user.dto";
 import {
     PaginationQuery,
     PaginationService,
-    PaginationConstants,
     IResponsePaging,
     ResponsePaging,
+    PaginationListDto,
+    ENUM_PAGINATION_ORDER_DIRECTION_TYPE,
 } from "@splitz/api/shared";
 import { UserListSerialization } from "../serializations/user.list.serialization";
 
@@ -38,11 +39,11 @@ export class UserController {
             1,
             10,
             "createdAt",
-            PaginationConstants.ENUM_PAGINATION_ORDER_DIRECTION_TYPE.ASC,
+            ENUM_PAGINATION_ORDER_DIRECTION_TYPE.ASC,
             ["username"],
             ["username"]
         )
-        { _search, _limit, _offset, _order }
+        { _search, _limit, _offset, _order }: PaginationListDto
     ): Promise<IResponsePaging> {
         const find = { ..._search };
 
