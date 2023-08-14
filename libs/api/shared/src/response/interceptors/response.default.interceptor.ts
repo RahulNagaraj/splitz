@@ -35,7 +35,6 @@ export class ResponseDefaultInterceptor<T = ResponseDefaultSerialization>
                 map(async (res: Promise<T>) => {
                     const ctx = context.switchToHttp();
                     const response = ctx.getResponse();
-                    const request = ctx.getRequest();
 
                     const classSerialization = this.reflector.get<ClassConstructor<any>>(
                         RESPONSE_SERIALIZATION_META_KEY,

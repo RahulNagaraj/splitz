@@ -33,7 +33,9 @@ export class UserController {
     }
 
     @Get("/list")
-    @ResponsePaging({ serialization: UserListSerialization })
+    @ResponsePaging({
+        serialization: UserListSerialization,
+    })
     public async listOfUsers(
         @PaginationQuery(
             1,

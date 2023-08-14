@@ -1,9 +1,10 @@
 import { HttpStatus } from "@nestjs/common";
-import { ClassConstructor } from "class-transformer";
+import { ClassConstructor, ClassTransformOptions } from "class-transformer";
 
 // Decorator options
 export interface IResponseOptions<T> {
     serialization?: ClassConstructor<T>;
+    serializationOptions?: ClassTransformOptions;
 }
 
 export interface IResponsePagingOptions<T> extends Omit<IResponseOptions<T>, "serialization"> {

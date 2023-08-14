@@ -80,8 +80,6 @@ export class ResponsePagingInterceptor<T = ResponsePagingSerialization>
 
                     const { query } = request;
 
-                    console.log("query: ", query);
-
                     delete query["perPage"];
 
                     delete query["page"];
@@ -98,8 +96,6 @@ export class ResponsePagingInterceptor<T = ResponsePagingSerialization>
                         skipNulls: true,
                         strictNullHandling: true,
                     });
-
-                    console.log(page, typeof page);
 
                     const cursorPaginationMetadata: ResponsePaginationCursorSerialization = {
                         nextPage:
