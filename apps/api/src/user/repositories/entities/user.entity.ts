@@ -49,7 +49,7 @@ export class UserEntity extends DatabaseMongoEntityAbstract {
     })
     password: string;
 
-    constructor(data: any) {
+    constructor(data: Partial<UserEntity>) {
         super();
         Object.assign(
             this,

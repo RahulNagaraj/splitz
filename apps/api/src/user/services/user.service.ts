@@ -24,6 +24,6 @@ export class UserService {
     }
 
     async getTotal(find?: FilterQuery<UserEntity>, options?: IDatabaseGetTotalOptions) {
-        return this.getTotal(find, options);
+        return this.userRepository.getTotal(find, options);
     }
 }

@@ -1,18 +1,8 @@
-import { PaginationModule } from "./pagination.module";
-import { PaginationService } from "./services/pagination.service";
-import { PaginationQuerySearch, PaginationQuery } from "./decorators/pagination.decorator";
-import { PaginationPagingPipe } from "./pipes/pagination.paging.pipe";
-import { PaginationOrderPipe } from "./pipes/pagination.order.pipe";
-import { PaginationSearchPipe } from "./pipes/pagination.search.pipe";
-import * as PaginationConstants from "./constants/pagination.constants";
-
-export {
-    PaginationModule,
-    PaginationService,
-    PaginationOrderPipe,
-    PaginationPagingPipe,
-    PaginationSearchPipe,
-    PaginationQuery,
-    PaginationQuerySearch,
-    PaginationConstants,
-};
+export * from "./pagination.module";
+export * from "./services/pagination.service";
+export * from "./decorators/pagination.decorator";
+export * from "./pipes/pagination.paging.pipe";
+export * from "./pipes/pagination.order.pipe";
+export * from "./pipes/pagination.search.pipe";
+export * from "./constants/pagination.constants";
+export * from "./dto/pagination.list.dto";

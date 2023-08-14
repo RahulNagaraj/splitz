@@ -1,18 +1,25 @@
 import { Inject, Injectable, PipeTransform, Scope, Type, mixin } from "@nestjs/common";
 import { REQUEST } from "@nestjs/core";
 import { PaginationService } from "../services/pagination.service";
+import { IRequestApp } from "../../request/interfaces/request.interface";
+import { IPaginationPagingPipe } from "../interfaces/pagination.interface";
 
-export function PaginationPagingPipe(defaultPerPage: number): Type<PipeTransform> {
+export function PaginationPagingPipe(
+    defaultPage: number,
+    defaultPerPage: number
+): Type<PipeTransform> {
     @Injectable({ scope: Scope.REQUEST })
     class MixinPaginationPagingPipe implements PipeTransform {
         constructor(
-            @Inject(REQUEST) protected readonly request: any,
+            @Inject(REQUEST) protected readonly request: IRequestApp,
             private readonly paginationService: PaginationService
         ) {}
 
-        async transform(value: Record<string, number>): Promise<Record<string, unknown>> {
-            const page = this.paginationService.page(value?.["page"] ?? 1);
-            const perPage = this.paginationService.perPage(value?.["perPage"] ?? defaultPerPage);
+        async transform(value: IPaginationPagingPipe): Promise<Record<string, unknown>> {
+            const pageValue = Number(value?.page ?? defaultPage);
+            const perPageValue = Number(value?.perPage ?? defaultPerPage);
+            const page = this.paginationService.page(pageValue ?? 1);
+            const perPage = this.paginationService.perPage(perPageValue);
             const offset = this.paginationService.offset(page, perPage);
 
             this.request.__pagination = {
