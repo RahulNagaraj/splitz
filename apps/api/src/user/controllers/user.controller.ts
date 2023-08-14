@@ -7,9 +7,16 @@ import {
     IResponsePaging,
     ResponsePaging,
     PaginationListDto,
-    ENUM_PAGINATION_ORDER_DIRECTION_TYPE,
 } from "@splitz/api/shared";
 import { UserListSerialization } from "../serializations/user.list.serialization";
+import {
+    USER_DEFAULT_AVAILABLE_ORDER_BY,
+    USER_DEFAULT_AVAILABLE_SEARCH,
+    USER_DEFAULT_ORDER_BY,
+    USER_DEFAULT_ORDER_DIRECTION,
+    USER_DEFAULT_PAGE,
+    USER_DEFAULT_PER_PAGE,
+} from "../constants/user.constants";
 
 @Controller({ version: "1", path: "/user" })
 export class UserController {
@@ -38,12 +45,12 @@ export class UserController {
     })
     public async listOfUsers(
         @PaginationQuery(
-            1,
-            10,
-            "createdAt",
-            ENUM_PAGINATION_ORDER_DIRECTION_TYPE.ASC,
-            ["username"],
-            ["username"]
+            USER_DEFAULT_PAGE,
+            USER_DEFAULT_PER_PAGE,
+            USER_DEFAULT_ORDER_BY,
+            USER_DEFAULT_ORDER_DIRECTION,
+            USER_DEFAULT_AVAILABLE_ORDER_BY,
+            USER_DEFAULT_AVAILABLE_SEARCH
         )
         { _search, _limit, _offset, _order }: PaginationListDto
     ): Promise<IResponsePaging> {

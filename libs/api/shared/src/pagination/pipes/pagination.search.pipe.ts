@@ -13,7 +13,7 @@ export function PaginationSearchPipe(availableSearch: string[]): Type<PipeTransf
         ) {}
 
         async transform(value: IPagingationSearchPipe): Promise<Record<string, unknown>> {
-            const searchText = value?.["search"] ?? "";
+            const searchText = value.search ?? "";
             const search = this.paginationService.search(searchText, availableSearch);
 
             this.request.__pagination = {
