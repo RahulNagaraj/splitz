@@ -76,7 +76,7 @@ export class ResponsePagingInterceptor<T = ResponsePagingSerialization>
 
                     delete _metadata?.customProperty;
 
-                    // metadata pagination
+                    // Pagination metadata
 
                     const { query } = request;
 
@@ -101,30 +101,28 @@ export class ResponsePagingInterceptor<T = ResponsePagingSerialization>
                         nextPage:
                             page < totalPage
                                 ? `${__path}?perPage=${perPage}&page=${page + 1}${
-                                      queryString ? "&queryString" : ""
+                                      queryString ? `&${queryString}` : ""
                                   }`
                                 : undefined,
                         previousPage:
                             page > 1
                                 ? `${__path}?perPage=${perPage}&page=${page - 1}${
-                                      queryString ? "&queryString" : ""
+                                      queryString ? `&${queryString}` : ""
                                   }`
                                 : undefined,
                         firstPage:
                             totalPage > 1
                                 ? `${__path}?perPage=${perPage}&page=${1}${
-                                      queryString ? "&queryString" : ""
+                                      queryString ? `&${queryString}` : ""
                                   }`
                                 : undefined,
                         lastPage:
                             totalPage > 1
                                 ? `${__path}?perPage=${perPage}&page=${totalPage}${
-                                      queryString ? "&queryString" : ""
+                                      queryString ? `&${queryString}` : ""
                                   }`
                                 : undefined,
                     };
-
-                    console.log(cursorPaginationMetadata);
 
                     metadata = {
                         ...metadata,
@@ -137,9 +135,7 @@ export class ResponsePagingInterceptor<T = ResponsePagingSerialization>
                         },
                     };
 
-                    if (!Object.values(cursorPaginationMetadata).includes(undefined)) {
-                        metadata.cursor = cursorPaginationMetadata;
-                    }
+                    metadata.cursor = cursorPaginationMetadata;
 
                     response.status(httpStatus);
 
