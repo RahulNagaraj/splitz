@@ -37,13 +37,9 @@ export class ResponsePagingSerialization<T = Record<string, any>> extends PickTy
         description: "Contain metadata about API",
         type: "object",
         example: {
-            languages: ["en"],
             timestamp: 1660190937231,
-            timezone: "Asia/Jakarta",
             requestId: "40c2f734-7247-472b-bc26-8eff6e669781",
             path: "/api/v1/test/hello",
-            version: "1",
-            repoVersion: "1.0.0",
             pagination: {
                 search: "faker.person.firstName()",
                 page: 1,

@@ -17,6 +17,7 @@ import {
     USER_DEFAULT_PAGE,
     USER_DEFAULT_PER_PAGE,
 } from "../constants/user.constants";
+import { UserListDoc } from "../docs/user.list.doc";
 
 @Controller({ version: "1", path: "/user" })
 export class UserController {
@@ -40,6 +41,7 @@ export class UserController {
     }
 
     @Get("/list")
+    @UserListDoc()
     @ResponsePaging({
         serialization: UserListSerialization,
     })

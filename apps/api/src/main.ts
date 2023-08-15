@@ -25,15 +25,6 @@ async function bootstrap() {
         defaultVersion: "1",
     });
 
-    // Setup swagger
-    const config = new DocumentBuilder()
-        .setTitle("Splitz")
-        .setDescription("Splitz API Documentation")
-        .setVersion("1.0")
-        .build();
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup("documentation", app, document);
-
     // Config service
     const configService = app.get(ConfigService);
 
@@ -43,6 +34,15 @@ async function bootstrap() {
 
     // Set Global Prefix
     app.setGlobalPrefix(appConfig.globalPrefix);
+
+    // Setup swagger
+    const config = new DocumentBuilder()
+        .setTitle("Splitz")
+        .setDescription("Splitz API Documentation")
+        .setVersion("1.0")
+        .build();
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup("documentation", app, document);
 
     await app.listen(appConfig.http.port);
     Logger.log(`🚀 Application is running on: http://${host}:${port}`);
