@@ -8,6 +8,11 @@ export interface IAppConfig {
         host: string;
         port: number;
     };
+    versioning: {
+        enable: boolean;
+        prefix: string;
+        version: string;
+    };
 }
 
 export default registerAs(
@@ -19,6 +24,11 @@ export default registerAs(
         http: {
             host: process.env["HTTP_HOST"] ?? "localhost",
             port: Number.parseInt(process.env["HTTP_PORT"] ?? "4001", 10),
+        },
+        versioning: {
+            enable: process.env["HTTP_VERSIONING_ENABLE"] === "true" ?? false,
+            prefix: "v",
+            version: process.env["HTTP_VERSION"] ?? "1",
         },
     })
 );
