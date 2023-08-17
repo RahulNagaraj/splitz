@@ -19,7 +19,7 @@ import {
 } from "../constants/user.constants";
 import { UserListDoc } from "../docs/user.list.doc";
 
-@Controller({ version: "1", path: "/user" })
+@Controller({ version: "1", path: "/users" })
 export class UserController {
     constructor(
         private readonly userService: UserService,
@@ -33,11 +33,6 @@ export class UserController {
     @Post("/create")
     public async createUser(@Body() createUserDto: CreateUserDto) {
         return this.userService.create(createUserDto);
-    }
-
-    @Get("/:id")
-    public async getUser(@Param("id") id: string) {
-        return this.userService.findOne(id);
     }
 
     @Get("/list")
@@ -70,5 +65,10 @@ export class UserController {
             _pagination: { total, totalPage },
             data: users,
         };
+    }
+
+    @Get("/:id")
+    public async getUser(@Param("id") id: string) {
+        return this.userService.findOne(id);
     }
 }

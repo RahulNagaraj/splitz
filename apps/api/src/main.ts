@@ -1,8 +1,6 @@
 import { Logger, ValidationPipe, VersioningType } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
-import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify";
 import { AppModule } from "./app.module";
-import helmet from "@fastify/helmet";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { ConfigService } from "@nestjs/config";
 import {
@@ -11,9 +9,10 @@ import {
     ResponseDefaultSerialization,
     ResponsePagingSerialization,
 } from "@splitz/api/shared";
+import helmet from "helmet";
 
 async function bootstrap() {
-    const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
+    const app = await NestFactory.create(AppModule);
 
     // Config service
     const configService = app.get(ConfigService);
@@ -22,7 +21,7 @@ async function bootstrap() {
     const docConfig = configService.getOrThrow<IDocConfig>("doc");
 
     // Register helmet
-    await app.register(helmet);
+    app.use(helmet());
 
     // Enable cors
     app.enableCors();
@@ -38,10 +37,6 @@ async function bootstrap() {
             prefix: appConfig.versioning.prefix,
         });
     }
-    app.enableVersioning({
-        type: VersioningType.URI,
-        defaultVersion: "1",
-    });
 
     const host = appConfig.http.host;
     const port = appConfig.http.port;

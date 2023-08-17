@@ -50,7 +50,7 @@ export class ResponsePagingInterceptor<T = ResponsePagingSerialization>
                             context.getHandler()
                         );
 
-                    const __path = request.url;
+                    const __path = request.path;
                     const __pagination = request.__pagination;
 
                     let httpStatus: HttpStatus = response.statusCode;
