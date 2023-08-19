@@ -5,7 +5,6 @@ import {
     ENUM_PAGINATION_ORDER_DIRECTION_TYPE,
     PAGINATION_AVAILABLE_ORDER_DIRECTION,
 } from "../constants/pagination.constants";
-import { IRequestApp } from "../../request/interfaces/request.interface";
 import { IPagingationOrderPipe } from "../interfaces/pagination.interface";
 
 export function PaginationOrderPipe(

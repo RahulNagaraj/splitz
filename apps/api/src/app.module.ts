@@ -1,13 +1,15 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
+import { configuration } from "@splitz/api/shared";
+import { UserModule } from "./user/user.module";
 import {
-    configuration,
     DATABASE_CONNECTION_NAME,
     DatabaseModule,
     DatabaseOptionsService,
-} from "@splitz/api/shared";
-import { UserModule } from "./user/user.module";
+} from "@splitz/api/database";
+
+//@TODO: Import Pagination into SharedModule and make it global;
 
 @Module({
     imports: [

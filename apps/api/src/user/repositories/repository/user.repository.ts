@@ -1,8 +1,7 @@
 import { Injectable } from "@nestjs/common";
-import { DatabaseMongoRepositoryAbstract } from "@splitz/api/shared";
 import { UserDocument, UserEntity } from "../entities/user.entity";
-import { DatabaseModel } from "@splitz/api/shared";
 import { Model } from "mongoose";
+import { DatabaseModel, DatabaseMongoRepositoryAbstract } from "@splitz/api/database";
 
 @Injectable()
 export class UserRepository extends DatabaseMongoRepositoryAbstract<UserEntity, UserDocument> {

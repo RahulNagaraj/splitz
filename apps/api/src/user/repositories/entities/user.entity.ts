@@ -1,5 +1,5 @@
 import { Prop, SchemaFactory } from "@nestjs/mongoose";
-import { DatabaseEntity, DatabaseMongoEntityAbstract } from "@splitz/api/shared";
+import { DatabaseEntity, DatabaseMongoEntityAbstract } from "@splitz/api/database";
 import { CallbackWithoutResultAndOptionalError, Types, Document } from "mongoose";
 
 @DatabaseEntity({ collection: "users" })

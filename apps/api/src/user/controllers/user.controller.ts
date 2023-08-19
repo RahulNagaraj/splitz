@@ -1,15 +1,7 @@
 import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { UserService } from "../services/user.service";
 import { CreateUserDto } from "../dto/user.create-user.dto";
-import {
-    PaginationQuery,
-    PaginationService,
-    IResponsePaging,
-    Response,
-    ResponsePaging,
-    PaginationListDto,
-    IResponse,
-} from "@splitz/api/shared";
+import { IResponsePaging, Response, ResponsePaging, IResponse } from "@splitz/api/shared";
 import { UserListSerialization } from "../serializations/user.list.serialization";
 import {
     USER_DEFAULT_AVAILABLE_ORDER_BY,
@@ -22,6 +14,7 @@ import {
 import { UserListDoc } from "../docs/user.list.doc";
 import { FindOneUserDoc } from "../docs/user.find-one.doc";
 import { UserSerialization } from "../serializations/user.serialization";
+import { PaginationListDto, PaginationQuery, PaginationService } from "@splitz/api/pagination";
 
 @Controller({ version: "1", path: "/users" })
 export class UserController {
