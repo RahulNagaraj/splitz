@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { UserRepository } from "../repositories/repository/user.repository";
 import { FilterQuery, Types } from "mongoose";
 import { CreateUserDto } from "../dto/user.create-user.dto";
@@ -15,7 +15,13 @@ export class UserService {
 
     async findOne(id: string) {
         const uid = new Types.ObjectId(id);
-        return this.userRepository.findOne({ _id: uid });
+        const user = await this.userRepository.findOne({ _id: uid });
+
+        if (!user) {
+            throw new NotFoundException("Could not find the user.");
+        }
+
+        return user;
     }
 
     async create(createUserDto: CreateUserDto) {

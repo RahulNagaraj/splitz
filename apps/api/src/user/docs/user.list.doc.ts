@@ -8,7 +8,7 @@ export function UserListDoc(): MethodDecorator {
             operation: "User List",
             description: "Get list of users",
         }),
-        DocRequest({}),
+        DocRequest(),
         DocResponsePaging<UserListSerialization>({
             serialization: UserListSerialization,
             statusCode: 200,

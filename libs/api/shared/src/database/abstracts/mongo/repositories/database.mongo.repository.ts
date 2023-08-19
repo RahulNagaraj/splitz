@@ -113,6 +113,8 @@ export abstract class DatabaseMongoRepositoryAbstract<
             findOne.sort(options.order);
         }
 
+        findOne.lean();
+
         return findOne.exec();
     }
 

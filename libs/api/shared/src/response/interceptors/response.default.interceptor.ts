@@ -29,7 +29,6 @@ export class ResponseDefaultInterceptor<T = ResponseDefaultSerialization>
         context: ExecutionContext,
         next: CallHandler<Promise<T>>
     ): Promise<Observable<Promise<T>>> {
-        console.log("ResponseDefaultInterceptor");
         if (context.getType() === "http") {
             return next.handle().pipe(
                 map(async (res: Promise<T>) => {
