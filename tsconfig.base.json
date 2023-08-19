@@ -17,6 +17,7 @@
         "paths": {
             "@splitz/api/database": ["libs/api/database/src/index.ts"],
             "@splitz/api/pagination": ["libs/api/pagination/src/index.ts"],
+            "@splitz/api/response": ["libs/api/response/src/index.ts"],
             "@splitz/api/shared": ["libs/api/shared/src/index.ts"],
             "@splitz/api/swagger": ["libs/api/swagger/src/index.ts"]
         }

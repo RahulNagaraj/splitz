@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { ResponseIdSerialization } from "@splitz/api/shared";
+import { ResponseIdSerialization } from "@splitz/api/response";
 import { Exclude } from "class-transformer";
 
 export class UserSerialization extends ResponseIdSerialization {
