@@ -1,5 +1,5 @@
+import { IPaginationOptions } from "@splitz/api/pagination";
 import { PopulateOptions } from "mongoose";
-import { IPaginationOptions } from "../../pagination/interfaces/pagination.interface";
 
 // Find
 export interface IDatabaseFindOneOptions extends Pick<IPaginationOptions, "order"> {

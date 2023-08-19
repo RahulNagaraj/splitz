@@ -1,7 +1,7 @@
 import { HttpStatus } from "@nestjs/common";
 import { ApiParamOptions, ApiQueryOptions } from "@nestjs/swagger";
 import { ClassConstructor } from "class-transformer";
-import { ENUM_DOC_REQUEST_BODY_TYPE } from "../constants/doc.constants";
+import { ENUM_DOC_REQUEST_BODY_TYPE } from "../constants";
 
 export interface IDocOptions {
     operation?: string;

@@ -19,12 +19,9 @@ import {
     IDatabaseRawOptions,
     IDatabaseSaveOptions,
     IDatabaseSoftDeleteManyOptions,
-} from "../../../interfaces/database.interface";
-import { DATABASE_DELETED_AT_FIELD_NAME } from "../../../constants/database.constants";
-import {
-    PAGINATION_OFFSET,
-    PAGINATION_PER_PAGE,
-} from "../../../../pagination/constants/pagination.constants";
+} from "../../../interfaces";
+import { DATABASE_DELETED_AT_FIELD_NAME } from "../../../constants";
+import { PAGINATION_OFFSET, PAGINATION_PER_PAGE } from "@splitz/api/pagination";
 import { DatabaseMongoEntityAbstract } from "../entities/database.mongo.entity.abstract";
 
 export abstract class DatabaseMongoRepositoryAbstract<

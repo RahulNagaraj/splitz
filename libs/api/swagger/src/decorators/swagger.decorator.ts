@@ -6,7 +6,7 @@ import {
     IDocRequestOptions,
     IDocResponseOptions,
     IDocResponsePagingOptions,
-} from "../interfaces/doc.interface";
+} from "../interfaces";
 import {
     ApiConsumes,
     ApiExtraModels,
@@ -19,10 +19,10 @@ import {
     getSchemaPath,
 } from "@nestjs/swagger";
 import { ResponseDefaultSerialization, ResponsePagingSerialization } from "../../response";
-import { ENUM_DOC_REQUEST_BODY_TYPE } from "../constants/doc.constants";
-import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "../../pagination";
+import { ENUM_DOC_REQUEST_BODY_TYPE } from "../constants";
+import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "@splitz/api/pagination";
 
-export function DocDefault<T>(options: IDocDefaultOptions): MethodDecorator {
+export function SwaggerDocDefault<T>(options: IDocDefaultOptions): MethodDecorator {
     const docs = [];
     const schema: Record<string, any> = {
         allOf: [],
@@ -51,7 +51,7 @@ export function DocDefault<T>(options: IDocDefaultOptions): MethodDecorator {
     );
 }
 
-export function Doc(options?: IDocOptions): MethodDecorator {
+export function SwaggerDoc(options?: IDocOptions): MethodDecorator {
     const currentTimestamp = new Date().valueOf();
 
     return applyDecorators(
@@ -72,18 +72,18 @@ export function Doc(options?: IDocOptions): MethodDecorator {
                 },
             },
         ]),
-        DocDefault({
+        SwaggerDocDefault({
             httpStatus: HttpStatus.SERVICE_UNAVAILABLE,
-            statusCode: 5051,
+            statusCode: 503,
         }),
-        DocDefault({
+        SwaggerDocDefault({
             httpStatus: HttpStatus.INTERNAL_SERVER_ERROR,
-            statusCode: 5050,
+            statusCode: 500,
         })
     );
 }
 
-export function DocRequest(options?: IDocRequestOptions): MethodDecorator {
+export function SwaggerDocRequest(options?: IDocRequestOptions): MethodDecorator {
     const docs: Array<ClassDecorator | MethodDecorator> = [];
 
     if (options?.bodyType === ENUM_DOC_REQUEST_BODY_TYPE.JSON) {
@@ -94,7 +94,7 @@ export function DocRequest(options?: IDocRequestOptions): MethodDecorator {
 
     if (options?.bodyType) {
         docs.push(
-            DocDefault({
+            SwaggerDocDefault({
                 httpStatus: HttpStatus.UNPROCESSABLE_ENTITY,
                 statusCode: 5070,
             })
@@ -114,7 +114,7 @@ export function DocRequest(options?: IDocRequestOptions): MethodDecorator {
     return applyDecorators(...docs);
 }
 
-export function DocResponse<T = void>(options?: IDocResponseOptions<T>): MethodDecorator {
+export function SwaggerDocResponse<T = void>(options?: IDocResponseOptions<T>): MethodDecorator {
     const docResponseOptions: IDocDefaultOptions = {
         httpStatus: options?.httpStatus ?? HttpStatus.OK,
         statusCode: options?.statusCode ?? options?.httpStatus ?? HttpStatus.OK,
@@ -123,10 +123,10 @@ export function DocResponse<T = void>(options?: IDocResponseOptions<T>): MethodD
     if (options?.serialization) {
         docResponseOptions.serialization = options.serialization;
     }
-    return applyDecorators(ApiProduces("application/json"), DocDefault(docResponseOptions));
+    return applyDecorators(ApiProduces("application/json"), SwaggerDocDefault(docResponseOptions));
 }
 
-export function DocResponsePaging<T = void>(
+export function SwaggerDocResponsePaging<T = void>(
     options: IDocResponsePagingOptions<T>
 ): MethodDecorator {
     const docResponseOptions: IDocResponsePagingOptions<T> = {
@@ -201,7 +201,7 @@ export function DocResponsePaging<T = void>(
     );
 }
 
-export function DocOneOf<T>(
+export function SwaggerDocOneOf<T>(
     httpStatus: HttpStatus,
     ...documents: IDocOfOptions[]
 ): MethodDecorator {
@@ -239,7 +239,7 @@ export function DocOneOf<T>(
     );
 }
 
-export function DocAnyOf<T>(
+export function SwaggerDocAnyOf<T>(
     httpStatus: HttpStatus,
     ...documents: IDocOfOptions[]
 ): MethodDecorator {

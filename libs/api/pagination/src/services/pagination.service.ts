@@ -7,8 +7,8 @@ import {
     PAGINATION_ORDER_DIRECTION,
     PAGINATION_PAGE,
     PAGINATION_PER_PAGE,
-} from "../constants/pagination.constants";
-import { IPaginationOrder } from "../interfaces/pagination.interface";
+} from "../constants";
+import { IPaginationOrder } from "../interfaces";
 
 @Injectable()
 export class PaginationService {

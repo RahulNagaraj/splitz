@@ -1,20 +1,20 @@
 import { HttpStatus, applyDecorators } from "@nestjs/common";
-import { Doc, DocRequest, DocResponse } from "@splitz/api/shared";
+import { SwaggerDoc, SwaggerDocRequest, SwaggerDocResponse } from "@splitz/api/swagger";
 
 export function FindOneUserDoc(): MethodDecorator {
     return applyDecorators(
-        Doc({
+        SwaggerDoc({
             operation: "Fine one user",
             description: "Get one user",
         }),
-        DocRequest({
+        SwaggerDocRequest({
             params: [{ type: String, name: "userId" }],
         }),
-        DocResponse({
+        SwaggerDocResponse({
             statusCode: 200,
             httpStatus: HttpStatus.OK,
         }),
-        DocResponse({
+        SwaggerDocResponse({
             statusCode: 404,
             httpStatus: HttpStatus.NOT_FOUND,
         })

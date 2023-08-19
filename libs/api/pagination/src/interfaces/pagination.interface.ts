@@ -1,4 +1,4 @@
-import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "../constants/pagination.constants";
+import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "../constants";
 
 export interface IPaginationPaging {
     limit?: number;

@@ -1,8 +1,6 @@
 import { Query } from "@nestjs/common";
-import { PaginationSearchPipe } from "../pipes/pagination.search.pipe";
-import { PaginationPagingPipe } from "../pipes/pagination.paging.pipe";
-import { PaginationOrderPipe } from "../pipes/pagination.order.pipe";
-import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "../constants/pagination.constants";
+import { PaginationSearchPipe, PaginationPagingPipe, PaginationOrderPipe } from "../pipes";
+import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "../constants";
 
 export function PaginationQuery(
     defaultPage: number,

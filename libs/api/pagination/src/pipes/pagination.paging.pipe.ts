@@ -1,8 +1,8 @@
 import { Inject, Injectable, PipeTransform, Scope, Type, mixin } from "@nestjs/common";
 import { REQUEST } from "@nestjs/core";
-import { PaginationService } from "../services/pagination.service";
+import { PaginationService } from "../services";
 import { IRequestApp } from "../../request/interfaces/request.interface";
-import { IPaginationPagingPipe } from "../interfaces/pagination.interface";
+import { IPaginationPagingPipe } from "../interfaces";
 
 export function PaginationPagingPipe(
     defaultPage: number,

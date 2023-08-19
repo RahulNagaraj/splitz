@@ -1,8 +1,8 @@
 import { Inject, Injectable, PipeTransform, Scope, Type, mixin } from "@nestjs/common";
 import { REQUEST } from "@nestjs/core";
-import { PaginationService } from "../services/pagination.service";
+import { PaginationService } from "../services";
 import { IRequestApp } from "../../request/interfaces/request.interface";
-import { IPagingationSearchPipe } from "../interfaces/pagination.interface";
+import { IPagingationSearchPipe } from "../interfaces";
 
 export function PaginationSearchPipe(availableSearch: string[]): Type<PipeTransform> {
     @Injectable({ scope: Scope.REQUEST })
