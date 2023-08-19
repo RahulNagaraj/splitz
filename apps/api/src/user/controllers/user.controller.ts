@@ -5,8 +5,10 @@ import {
     PaginationQuery,
     PaginationService,
     IResponsePaging,
+    Response,
     ResponsePaging,
     PaginationListDto,
+    IResponse,
 } from "@splitz/api/shared";
 import { UserListSerialization } from "../serializations/user.list.serialization";
 import {
@@ -18,6 +20,8 @@ import {
     USER_DEFAULT_PER_PAGE,
 } from "../constants/user.constants";
 import { UserListDoc } from "../docs/user.list.doc";
+import { FindOneUserDoc } from "../docs/user.find-one.doc";
+import { UserSerialization } from "../serializations/user.serialization";
 
 @Controller({ version: "1", path: "/users" })
 export class UserController {
@@ -25,17 +29,8 @@ export class UserController {
         private readonly userService: UserService,
         private readonly paginationService: PaginationService
     ) {}
+
     @Get("/")
-    public async getAllUsers() {
-        return this.userService.findAll();
-    }
-
-    @Post("/create")
-    public async createUser(@Body() createUserDto: CreateUserDto) {
-        return this.userService.create(createUserDto);
-    }
-
-    @Get("/list")
     @UserListDoc()
     @ResponsePaging({
         serialization: UserListSerialization,
@@ -67,8 +62,21 @@ export class UserController {
         };
     }
 
-    @Get("/:id")
-    public async getUser(@Param("id") id: string) {
-        return this.userService.findOne(id);
+    @Post("/create")
+    public async createUser(@Body() createUserDto: CreateUserDto) {
+        return this.userService.create(createUserDto);
+    }
+
+    @Get("/:userId")
+    @FindOneUserDoc()
+    @Response({
+        serialization: UserSerialization,
+    })
+    public async getUser(@Param("userId") userId: string): Promise<IResponse> {
+        const user = await this.userService.findOne(userId);
+
+        return {
+            data: user,
+        };
     }
 }
