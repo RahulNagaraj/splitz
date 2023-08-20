@@ -17,7 +17,7 @@ import {
     IDatabaseSaveOptions,
     IDatabaseSoftDeleteManyOptions,
 } from "../interfaces";
-import { DatabaseMongoEntityAbstract } from "./mongo/entities/database.mongo.entity.abstract";
+import { DatabaseMongoEntityAbstract } from "./";
 
 export abstract class DatabaseBaseRepositoryAbstract<
     Entity extends DatabaseMongoEntityAbstract,

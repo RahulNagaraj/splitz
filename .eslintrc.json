@@ -18,7 +18,7 @@
                             },
                             {
                                 "sourceTag": "scope:database",
-                                "onlyDependOnLibsWithTags": ["scope:pagination", "scope:request", "scope:shared"]
+                                "onlyDependOnLibsWithTags": ["scope:pagination", "scope:shared"]
                             },
                             {
                                 "sourceTag": "scope:pagination",
@@ -30,19 +30,19 @@
                             },
                             {
                                 "sourceTag": "scope:response",
-                                "onlyDependOnLibsWithTags": ["scope:pagination", "scope:request", "scope:shared"]
+                                "onlyDependOnLibsWithTags": ["scope:pagination", "scope:request"]
                             },
                             {
                                 "sourceTag": "scope:shared",
-                                "onlyDependOnLibsWithTags": ["scope:database", "scope:pagination", "scope:request", "scope:response", "scope:shared", "scope:swagger", "scope:error"]
+                                "onlyDependOnLibsWithTags": ["scope:database", "scope:pagination", "scope:error"]
                             },
                             {
                                 "sourceTag": "scope:swagger",
-                                "onlyDependOnLibsWithTags": ["scope:pagination", "scope:request", "scope:response"]
+                                "onlyDependOnLibsWithTags": ["scope:pagination", "scope:response"]
                             },
                             {
                                 "sourceTag": "scope:error",
-                                "onlyDependOnLibsWithTags": ["scope:database", "scope:pagination", "scope:request", "scope:response", "scope:shared", "scope:swagger", "scope:error"]
+                                "onlyDependOnLibsWithTags": []
                             }
                         ]
                     }

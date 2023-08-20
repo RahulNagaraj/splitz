@@ -1,12 +1,12 @@
 import { Types } from "mongoose";
-import { DatabaseBaseEntityAbstract } from "../../database.base-entity.abstract";
+import { DatabaseBaseEntityAbstract } from "../../";
 import { Prop } from "@nestjs/mongoose";
 import {
     DATABASE_CREATED_AT_FIELD_NAME,
     DATABASE_DELETED_AT_FIELD_NAME,
     DATABASE_UPDATED_AT_FIELD_NAME,
     DatabaseDefaultObjectId,
-} from "../../../constants/database.constants";
+} from "../../../constants";
 
 export abstract class DatabaseMongoEntityAbstract extends DatabaseBaseEntityAbstract {
     @Prop({ type: Types.ObjectId, default: DatabaseDefaultObjectId })
