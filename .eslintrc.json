@@ -34,7 +34,7 @@
                             },
                             {
                                 "sourceTag": "scope:shared",
-                                "onlyDependOnLibsWithTags": []
+                                "onlyDependOnLibsWithTags": ["scope:database", "scope:pagination", "scope:request", "scope:response", "scope:shared", "scope:swagger", "scope:error"]
                             },
                             {
                                 "sourceTag": "scope:swagger",
@@ -42,7 +42,7 @@
                             },
                             {
                                 "sourceTag": "scope:error",
-                                "onlyDependOnLibsWithTags": ["scope:shared"]
+                                "onlyDependOnLibsWithTags": ["scope:database", "scope:pagination", "scope:request", "scope:response", "scope:shared", "scope:swagger", "scope:error"]
                             }
                         ]
                     }

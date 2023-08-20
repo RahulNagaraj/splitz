@@ -1,13 +1,10 @@
 import { ApiProperty, PickType } from "@nestjs/swagger";
-import {
-    ResponseDefaultSerialization,
-    ResponseMetadataSerialization,
-} from "./response.default.serializatiion";
+import { ResponseDefaultSerialization, ResponseMetadataSerialization } from "./";
 import {
     ENUM_PAGINATION_ORDER_DIRECTION_TYPE,
     PAGINATION_AVAILABLE_ORDER_DIRECTION,
-} from "../../pagination/constants/pagination.constants";
-import { RequestPaginationSerialization } from "../../request/serializations/request.serialization";
+} from "@splitz/api/pagination";
+import { RequestPaginationSerialization } from "@splitz/api/request";
 
 export class ResponsePaginationCursorSerialization {
     nextPage?: string;

@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { MongooseModuleOptions } from "@nestjs/mongoose";
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { IDatabaseConfig } from "@splitz/api/shared";
 
 @Injectable()

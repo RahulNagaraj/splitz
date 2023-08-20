@@ -1,4 +1,4 @@
-import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "@splitz/api/shared";
+import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "@splitz/api/pagination";
 
 export const USER_DEFAULT_PAGE = 1;
 export const USER_DEFAULT_PER_PAGE = 10;
