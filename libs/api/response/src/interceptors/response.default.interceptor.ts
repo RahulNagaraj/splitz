@@ -8,16 +8,13 @@ import {
 import { Reflector } from "@nestjs/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import {
-    ResponseDefaultSerialization,
-    ResponseMetadataSerialization,
-} from "../serializations/response.default.serializatiion";
+import { ResponseDefaultSerialization, ResponseMetadataSerialization } from "../serializations";
 import {
     RESPONSE_SERIALIZATION_META_KEY,
     RESPONSE_SERIALIZATION_OPTIONS_META_KEY,
-} from "../constants/response.constants";
+} from "../constants";
 import { ClassConstructor, ClassTransformOptions, plainToInstance } from "class-transformer";
-import { IResponse } from "../interfaces/response.interface";
+import { IResponse } from "../interfaces";
 
 @Injectable()
 export class ResponseDefaultInterceptor<T = ResponseDefaultSerialization>

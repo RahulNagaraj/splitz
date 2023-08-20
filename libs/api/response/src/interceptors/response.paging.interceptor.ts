@@ -21,11 +21,8 @@ import {
 } from "../constants/response.constants";
 import { IResponsePaging } from "../interfaces/response.interface";
 import * as qs from "qs";
-import { IRequestApp } from "../../request/interfaces/request.interface";
-import {
-    PAGINATION_PAGE,
-    PAGINATION_PER_PAGE,
-} from "../../pagination/constants/pagination.constants";
+import { PAGINATION_PAGE, PAGINATION_PER_PAGE } from "@splitz/api/pagination";
+import { IRequestApp } from "@splitz/api/request";
 
 @Injectable()
 export class ResponsePagingInterceptor<T = ResponsePagingSerialization>

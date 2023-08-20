@@ -6,6 +6,8 @@ import {
     PAGINATION_AVAILABLE_ORDER_DIRECTION,
 } from "../constants";
 import { IPagingationOrderPipe } from "../interfaces";
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { IRequestApp } from "@splitz/api/request";
 
 export function PaginationOrderPipe(
     defaultOrderBy: string,

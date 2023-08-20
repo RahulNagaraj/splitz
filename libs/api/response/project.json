@@ -26,5 +26,5 @@
             }
         }
     },
-    "tags": ["scope:api"]
+    "tags": ["scope:response"]
 }

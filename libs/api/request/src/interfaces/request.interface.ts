@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { RequestPaginationSerialization } from "../serializations/request.serialization";
+import { RequestPaginationSerialization } from "../serializations";
 
 export interface IRequestApp extends Request {
     user?: Record<string, any>;

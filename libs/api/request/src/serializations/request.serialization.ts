@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "../../pagination/constants/pagination.constants";
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "@splitz/api/pagination";
 
 export class RequestPaginationSerialization {
     @ApiProperty({

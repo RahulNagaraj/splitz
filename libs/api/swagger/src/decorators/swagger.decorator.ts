@@ -18,9 +18,9 @@ import {
     ApiResponse,
     getSchemaPath,
 } from "@nestjs/swagger";
-import { ResponseDefaultSerialization, ResponsePagingSerialization } from "../../response";
 import { ENUM_DOC_REQUEST_BODY_TYPE } from "../constants";
 import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "@splitz/api/pagination";
+import { ResponseDefaultSerialization, ResponsePagingSerialization } from "@splitz/api/response";
 
 export function SwaggerDocDefault<T>(options: IDocDefaultOptions): MethodDecorator {
     const docs = [];
