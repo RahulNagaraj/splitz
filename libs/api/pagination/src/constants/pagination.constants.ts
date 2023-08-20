@@ -1,7 +1,4 @@
-export enum ENUM_PAGINATION_ORDER_DIRECTION_TYPE {
-    ASC = "asc",
-    DESC = "desc",
-}
+import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "./pagination.constants.enum";
 
 export const PAGINATION_PER_PAGE = 10;
 export const PAGINATION_MAX_PER_PAGE = 100;
