@@ -13,8 +13,36 @@
                         "allow": [],
                         "depConstraints": [
                             {
-                                "sourceTag": "*",
-                                "onlyDependOnLibsWithTags": ["*"]
+                                "sourceTag": "scope:api",
+                                "onlyDependOnLibsWithTags": ["scope:database", "scope:pagination", "scope:request", "scope:response", "scope:shared", "scope:swagger", "scope:error"]
+                            },
+                            {
+                                "sourceTag": "scope:database",
+                                "onlyDependOnLibsWithTags": ["scope:pagination", "scope:shared"]
+                            },
+                            {
+                                "sourceTag": "scope:pagination",
+                                "onlyDependOnLibsWithTags": ["scope:database", "scope:request", "scope:shared"]
+                            },
+                            {
+                                "sourceTag": "scope:request",
+                                "onlyDependOnLibsWithTags": ["scope:pagination", "scope:shared"]
+                            },
+                            {
+                                "sourceTag": "scope:response",
+                                "onlyDependOnLibsWithTags": ["scope:pagination", "scope:request"]
+                            },
+                            {
+                                "sourceTag": "scope:shared",
+                                "onlyDependOnLibsWithTags": ["scope:database", "scope:pagination", "scope:error"]
+                            },
+                            {
+                                "sourceTag": "scope:swagger",
+                                "onlyDependOnLibsWithTags": ["scope:pagination", "scope:response"]
+                            },
+                            {
+                                "sourceTag": "scope:error",
+                                "onlyDependOnLibsWithTags": []
                             }
                         ]
                     }

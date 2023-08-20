@@ -1,15 +1,15 @@
 import { applyDecorators } from "@nestjs/common";
-import { Doc, DocRequest, DocResponsePaging } from "@splitz/api/shared";
 import { UserListSerialization } from "../serializations/user.list.serialization";
+import { SwaggerDoc, SwaggerDocRequest, SwaggerDocResponsePaging } from "@splitz/api/swagger";
 
 export function UserListDoc(): MethodDecorator {
     return applyDecorators(
-        Doc({
+        SwaggerDoc({
             operation: "User List",
             description: "Get list of users",
         }),
-        DocRequest(),
-        DocResponsePaging<UserListSerialization>({
+        SwaggerDocRequest(),
+        SwaggerDocResponsePaging<UserListSerialization>({
             serialization: UserListSerialization,
             statusCode: 200,
         })

@@ -3,7 +3,7 @@ import { UserRepository } from "../repositories/repository/user.repository";
 import { FilterQuery, Types } from "mongoose";
 import { CreateUserDto } from "../dto/user.create-user.dto";
 import { UserEntity } from "../repositories/entities/user.entity";
-import { IDatabaseFindAllOptions, IDatabaseGetTotalOptions } from "@splitz/api/shared";
+import { IDatabaseFindAllOptions, IDatabaseGetTotalOptions } from "@splitz/api/database";
 
 @Injectable()
 export class UserService {

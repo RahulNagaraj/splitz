@@ -15,7 +15,13 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@splitz/api/shared": ["libs/api/shared/src/index.ts"]
+            "@splitz/api/database": ["libs/api/database/src/index.ts"],
+            "@splitz/api/error": ["libs/api/error/src/index.ts"],
+            "@splitz/api/pagination": ["libs/api/pagination/src/index.ts"],
+            "@splitz/api/request": ["libs/api/request/src/index.ts"],
+            "@splitz/api/response": ["libs/api/response/src/index.ts"],
+            "@splitz/api/shared": ["libs/api/shared/src/index.ts"],
+            "@splitz/api/swagger": ["libs/api/swagger/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]
