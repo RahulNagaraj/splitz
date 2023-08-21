@@ -5,6 +5,7 @@ import {
     PAGINATION_AVAILABLE_ORDER_DIRECTION,
 } from "@splitz/api/pagination";
 import { RequestPaginationSerialization } from "@splitz/api/request";
+import { faker } from "@faker-js/faker";
 
 export class ResponsePaginationCursorSerialization {
     nextPage?: string;
@@ -38,7 +39,7 @@ export class ResponsePagingSerialization<T = Record<string, any>> extends PickTy
             requestId: "40c2f734-7247-472b-bc26-8eff6e669781",
             path: "/api/v1/test/hello",
             pagination: {
-                search: "faker.person.firstName()",
+                search: faker.person.firstName(),
                 page: 1,
                 perPage: 20,
                 orderBy: "createdAt",

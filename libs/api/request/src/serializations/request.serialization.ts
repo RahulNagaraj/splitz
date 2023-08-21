@@ -1,3 +1,4 @@
+import { faker } from "@faker-js/faker";
 import { ApiProperty } from "@nestjs/swagger";
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { ENUM_PAGINATION_ORDER_DIRECTION_TYPE } from "@splitz/api/pagination";
@@ -6,7 +7,7 @@ export class RequestPaginationSerialization {
     @ApiProperty({
         required: true,
         nullable: false,
-        example: "faker.person.firstName()",
+        example: faker.person.firstName(),
     })
     search?: string;
 

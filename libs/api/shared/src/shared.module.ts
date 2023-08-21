@@ -10,6 +10,10 @@ import {
 } from "@splitz/api/database";
 import { PaginationModule } from "@splitz/api/pagination";
 import { ErrorModule } from "@splitz/api/error";
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { HelperModule } from "@splitz/api/helper";
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { AuthModule } from "@splitz/api/auth";
 
 @Module({
     imports: [
@@ -27,6 +31,8 @@ import { ErrorModule } from "@splitz/api/error";
         }),
         PaginationModule,
         ErrorModule,
+        HelperModule,
+        AuthModule.forRoot(),
     ],
 })
 export class SharedModule {}

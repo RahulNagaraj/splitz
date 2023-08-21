@@ -14,7 +14,7 @@
                         "depConstraints": [
                             {
                                 "sourceTag": "scope:api",
-                                "onlyDependOnLibsWithTags": ["scope:database", "scope:pagination", "scope:request", "scope:response", "scope:shared", "scope:swagger", "scope:error"]
+                                "onlyDependOnLibsWithTags": ["scope:database", "scope:pagination", "scope:request", "scope:response", "scope:shared", "scope:swagger", "scope:error", "scope: auth", "scope:helper"]
                             },
                             {
                                 "sourceTag": "scope:database",
@@ -34,7 +34,7 @@
                             },
                             {
                                 "sourceTag": "scope:shared",
-                                "onlyDependOnLibsWithTags": ["scope:database", "scope:pagination", "scope:error"]
+                                "onlyDependOnLibsWithTags": ["scope:database", "scope:pagination", "scope:error", "scope:helper"]
                             },
                             {
                                 "sourceTag": "scope:swagger",
@@ -43,6 +43,14 @@
                             {
                                 "sourceTag": "scope:error",
                                 "onlyDependOnLibsWithTags": []
+                            },
+                            {
+                                "sourceTag": "scope:auth",
+                                "onlyDependOnLibsWithTags": ["scope:shared", "scope:helper"]
+                            },
+                            {
+                                "sourceTag": "scope:helper",
+                                "onlyDependOnLibsWithTags": ["scope:shared"]
                             }
                         ]
                     }
